@@ -10,25 +10,42 @@ const resetbutton = document.querySelector("#reset-button");
 let rollsArray=[];
 
 
+
+
 function rollRandomNumber(){
     return Math.floor(Math.random() * 6) + 1;
+
 }
 
 rollButton.addEventListener("click", function(){
 
 let rollsInput = Number(RollsInput.value);
 
+
 let count = 0;
 rollsArray = []
 
 while (count<rollsInput) {
-rollsArray.push(rollRandomNumber())
-
-count ++;
+    rollsArray.push(rollRandomNumber())
+    
+    count ++;
 
 }
+
 console.log(rollsArray)
+
+document.getElementById("total").innerHTML = rollsArray.reduce(myFunc);
+
+function myFunc(total, num) {
+    return total + num;
+}
+
+
 })
+
+
+
+
 
 
 resultsButton.addEventListener("click", function(){
@@ -48,6 +65,7 @@ resultsButton.addEventListener("click", function(){
 resetbutton.addEventListener("click", function () {
     console.log("resets")
     resultsList.innerHTML = 0;
+    total.innerHTML = 0;
     
 
 })
